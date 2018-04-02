@@ -109,7 +109,10 @@ public:
             if(i!=j) { m_array[i]=m_array[j]; }
             i++;
            }
-         // in this case, it is no point to check m_owned and SafeDelete value
+         else if(m_owned)
+           {
+            SafeDelete(m_array[j]);
+           }
         }
       if(i<s) ArrayResize(m_array,i);
       return ((s-i)> 0);
